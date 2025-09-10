@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acute Respiratory Distress Syndrome (ARDS) - Comprehensive Resource</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 5px solid var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .nav-container {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .section h2 i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+
+        .card {
+            border-left: 4px solid var(--secondary);
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+            background-color: #f8f9fa;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .grid-item {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-top: 4px solid var(--secondary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 100%;
+            margin: 2rem 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--secondary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 10px 40px;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--secondary);
+            border-radius: 50%;
+            top: 15px;
+            right: -13px;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--secondary);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--secondary);
+        }
+
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--secondary);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--secondary) transparent transparent;
+        }
+
+        .right::after {
+            left: -13px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--secondary);
+        }
+
+        .timeline-content h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        .resource-list {
+            list-style-type: none;
+        }
+
+        .resource-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .resource-list li::before {
+            content: "•";
+            color: var(--secondary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            font-size: 1.2rem;
+        }
+
+        .resource-list a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .resource-list a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        .image-placeholder {
+            background-color: #eee;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin: 1.5rem 0;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-style: italic;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 2rem 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .phase-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .phase-card {
+            flex: 1;
+            min-width: 250px;
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-top: 4px solid var(--secondary);
+        }
+
+        .phase-card h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::before {
+                left: 60px;
+                border: medium solid var(--secondary);
+                border-width: 10px 10px 10px 0;
+                border-color: transparent var(--secondary) transparent transparent;
+            }
+
+            .left::after, .right::after {
+                left: 15px;
+            }
+
+            .right {
+                left: 0%;
+            }
+
+            nav {
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                margin: 0.25rem;
+                padding: 0.5rem;
+            }
+
+            .phase-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Acute Respiratory Distress Syndrome (ARDS)</h1>
+            <p>Comprehensive Clinical Resource for Critical Care Professionals</p>
+        <p><em>Created by Dr. Islam Khatab for Educational Purpose</em></p>
+        </div>
+    </header>
+
+    <div class="nav-container">
+        <nav class="container">
+            <a href="#definition">Definition</a>
+            <a href="#history">History</a>
+            <a href="#epidemiology">Epidemiology</a>
+            <a href="#pathophysiology">Pathophysiology</a>
+            <a href="#management">Management</a>
+            <a href="#studies">Landmark Studies</a>
+            <a href="#guidelines">Guidelines</a>
+            <a href="#resources">Resources</a>
+        </nav>
+    </div>
+
+    <main class="container">
+        <section id="definition" class="section">
+            <h2><i class="fas fa-book-medical"></i> Definition</h2>
+            <div class="card">
+                <p>Acute Respiratory Distress Syndrome (ARDS) is a form of non-cardiogenic respiratory failure characterized by <strong>acute onset hypoxemia</strong>, <strong>bilateral pulmonary infiltrates on imaging</strong>, and <strong>reduced lung compliance</strong>, not fully explained by cardiac failure or fluid overload.</p>
+            </div>
+
+            <h3>Berlin Definition (2012) Diagnostic Criteria:</h3>
+            <div class="grid">
+                <div class="grid-item">
+                    <h4>Timing</h4>
+                    <p>Within 1 week of known clinical insult or new/worsening respiratory symptoms</p>
+                </div>
+                <div class="grid-item">
+                    <h4>Chest Imaging</h4>
+                    <p>Bilateral opacities not fully explained by effusions, lobar/lung collapse, or nodules</p>
+                </div>
+                <div class="grid-item">
+                    <h4>Origin of Edema</h4>
+                    <p>Respiratory failure not fully explained by cardiac failure or fluid overload</p>
+                </div>
+            </div>
+
+            <h3>Oxygenation Severity (with PEEP/CPAP ≥5 cmH₂O):</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Severity</th>
+                        <th>PaO₂/FiO₂ Ratio</th>
+                        <th>Mortality Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mild</td>
+                        <td>200-300 mmHg</td>
+                        <td>27%</td>
+                    </tr>
+                    <tr>
+                        <td>Moderate</td>
+                        <td>100-200 mmHg</td>
+                        <td>32%</td>
+                    </tr>
+                    <tr>
+                        <td>Severe</td>
+                        <td>≤100 mmHg</td>
+                        <td>45%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </section>
+
+        <section id="history" class="section">
+            <h2><i class="fas fa-history"></i> Historical Evolution</h2>
+
+            <div class="card">
+                <h3>1967: First Description</h3>
+                <p>Ashbaugh et al. first described a syndrome in 12 patients featuring acute dyspnea, hypoxemia refractory to oxygen, decreased lung compliance, and diffuse bilateral infiltrates.</p>
+            </div>
+
+            <div class="card">
+                <h3>1994: American-European Consensus Conference (AECC)</h3>
+                <p>Established the first formal criteria, introducing the term Acute Lung Injury (ALI) for PaO₂/FiO₂ ≤ 300 mmHg and ARDS for PaO₂/FiO₂ ≤ 200 mmHg.</p>
+                <p><strong>Limitations:</strong> Poor reliability of chest X-ray interpretation, lack of PEEP standardization, and problematic use of pulmonary artery catheters.</p>
+            </div>
+
+            <div class="card">
+                <h3>2012: The Berlin Definition</h3>
+                <p>A pivotal evolution, addressing AECC's flaws through empirical evidence.</p>
+                <p><strong>Key Advances:</strong> Defined onset within 1 week of a known insult; mandated minimum PEEP of 5 cm H₂O; replaced PCWP with non-invasive assessment; introduced 3-tier severity stratification with strong prognostic correlation.</p>
+                <p><strong>Validation:</strong> The Berlin Definition showed better predictive validity for mortality compared to the AECC criteria (JAMA 2012;307(23):2526-2533).</p>
+            </div>
+
+            <div class="card">
+                <h3>Future Directions</h3>
+                <p>The quest for a "biological phenotype" is ongoing. Research into biomarkers (e.g., IL-6, IL-8, sRAGE) aims to move beyond clinical criteria to identify endotypes (e.g., "hyperinflammatory" vs. "hypoinflammatory") for targeted therapies.</p>
+            </div>
+
+        </section>
+
+        <section id="epidemiology" class="section">
+            <h2><i class="fas fa-chart-line"></i> Epidemiology</h2>
+
+            <div class="card">
+                <h3>Incidence</h3>
+                <p>Large-scale studies estimate a global incidence of 10-86 cases per 100,000 person-years, with significant regional variation. The COVID-19 pandemic led to an unprecedented surge in ARDS cases worldwide.</p>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="incidenceChart"></canvas>
+            </div>
+
+            <div class="card">
+                <h3>Mortality</h3>
+                <p>Mortality is strongly linked to severity, comorbidities, and age. Pre-COVID meta-analyses place overall hospital mortality at approximately 35-45%.</p>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="mortalityChart"></canvas>
+            </div>
+
+            <div class="card">
+                <h3>Risk Factors</h3>
+                <p>The most common direct risk factor is pneumonia (bacterial > viral). The most common indirect risk factor is non-pulmonary sepsis. Others include aspiration, trauma, pancreatitis, and massive transfusion.</p>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="riskFactorsChart"></canvas>
+            </div>
+        </section>
+
+        <section id="pathophysiology" class="section">
+            <h2><i class="fas fa-lungs"></i> Pathophysiology</h2>
+
+            <div class="card">
+                <p>ARDS is characterized by <strong>alveolar-capillary barrier injury</strong> leading to protein-rich pulmonary edema, reduced lung compliance, ventilation-perfusion mismatch, and severe hypoxemia.</p>
+            </div>
+
+            <h3>Pathophysiological Phases:</h3>
+            <div class="phase-container">
+                <div class="phase-card">
+                    <h4>Exudative Phase (0-7 days)</h4>
+                    <p>Alveolar edema, inflammatory cell infiltration, hyaline membrane formation, and loss of surfactant function</p>
+                </div>
+
+                <div class="phase-card">
+                    <h4>Proliferative Phase (7-21 days)</h4>
+                    <p>Resolution of edema, fibroblast proliferation, and early lung repair</p>
+                </div>
+
+                <div class="phase-card">
+                    <h4>Fibrotic Phase (>21 days)</h4>
+                    <p>Collagen deposition and fibrosis in some patients, leading to long-term functional impairment</p>
+                </div>
+            </div>
+
+            <h3>Key Pathophysiological Concepts:</h3>
+            <div class="grid">
+                <div class="grid-item">
+                    <h4>Diffuse Alveolar Damage (DAD)</h4>
+                    <p>The histopathological hallmark, though not universal. Features endothelial and epithelial injury, hyaline membrane formation, and alveolar edema.</p>
+                </div>
+
+                <div class="grid-item">
+                    <h4>"Baby Lung" Concept (Gattinoni)</h4>
+                    <p>The aerated lung in ARDS is not a small, healthy lung but a small, normally aerated compartment within a diseased, non-aerated one.</p>
+                </div>
+
+                <div class="grid-item">
+                    <h4>Ventilator-Induced Lung Injury (VILI)</h4>
+                    <p>A self-perpetuating injury from mechanical ventilation via volutrauma, barotrauma, atelectrauma, and biotrauma.</p>
+                </div>
+
+                <div class="grid-item">
+                    <h4>Patient-Self Inflicted Lung Injury (P-SILI)</h4>
+                    <p>Strong spontaneous inspiratory efforts can generate excessive negative pleural pressures, causing lung injury even without a ventilator.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="management" class="section">
+            <h2><i class="fas fa-stethoscope"></i> Clinical Management</h2>
+
+            <div class="card">
+                <h3>General Principles</h3>
+                <ul>
+                    <li>Treat underlying cause (sepsis, pneumonia, trauma, etc.)</li>
+                    <li>Supportive care with lung-protective strategies</li>
+                    <li>Avoid iatrogenic harm (barotrauma, volutrauma, fluid overload)</li>
+                    <li>Multidisciplinary approach with early involvement of intensivists</li>
+                </ul>
+            </div>
+
+            <h3>Mechanical Ventilation: The Cornerstone</h3>
+            <p>The goal is to ensure adequate gas exchange while minimizing VILI.</p>
+
+            <div class="grid">
+                <div class="grid-item">
+                    <h4>Lung-Protective Ventilation</h4>
+                    <ul>
+                        <li>Tidal volume: 6 mL/kg predicted body weight</li>
+                        <li>Plateau pressure: ≤30 cmH₂O</li>
+                        <li>Driving pressure: <15 cmH₂O</li>
+                        <li>Permissive hypercapnia (pH ≥ 7.15-7.25)</li>
+                    </ul>
+                </div>
+
+                <div class="grid-item">
+                    <h4>PEEP Strategies</h4>
+                    <ul>
+                        <li>Use moderate-to-high PEEP in moderate-severe ARDS</li>
+                        <li>Balance recruitment vs overdistension</li>
+                        <li>Consider PEEP/FiO₂ tables or esophageal manometry</li>
+                    </ul>
+                </div>
+
+                <div class="grid-item">
+                    <h4>Adjunctive Strategies</h4>
+                    <ul>
+                        <li>Prone positioning for severe ARDS (PaO₂/FiO₂ <150 mmHg)</li>
+                        <li>Short-course neuromuscular blockade (≤48h) in early severe ARDS</li>
+                        <li>Conservative fluid management</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>ARDSNet PEEP/FiO₂ Table</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>FiO₂</th>
+                        <th>0.3</th>
+                        <th>0.4</th>
+                        <th>0.5</th>
+                        <th>0.6</th>
+                        <th>0.7</th>
+                        <th>0.8</th>
+                        <th>0.9</th>
+                        <th>1.0</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>PEEP (cmH₂O)</strong></td>
+                        <td>5-8</td>
+                        <td>8-10</td>
+                        <td>10-12</td>
+                        <td>12-14</td>
+                        <td>14-16</td>
+                        <td>16-18</td>
+                        <td>18-20</td>
+                        <td>20-24</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Rescue Therapies for Refractory Hypoxemia</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Therapy</th>
+                        <th>Indication</th>
+                        <th>Considerations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ECMO</td>
+                        <td>Severe ARDS with PaO₂/FiO₂ <80 despite optimal care</td>
+                        <td>Resource-intensive, requires expertise</td>
+                    </tr>
+                    <tr>
+                        <td>Inhaled Pulmonary Vasodilators</td>
+                        <td>Refractory hypoxemia as bridge to recovery</td>
+                        <td>Transient effect, may improve oxygenation</td>
+                    </tr>
+                    <tr>
+                        <td>Recruitment Maneuvers</td>
+                        <td>Severe hypoxemia with recruitable lung</td>
+                        <td>Potential for hemodynamic compromise</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Pharmacotherapy</h3>
+            <div class="card">
+                <h4>Corticosteroids</h4>
+                <p>The most evidence-supported pharmacologic adjunct. The DEXA-ARDS trial and subsequent meta-analysis showed that low-dose methylprednisolone reduces mortality and duration of mechanical ventilation in moderate-to-severe ARDS.</p>
+            </div>
+
+            <div class="card">
+                <h4>Not Recommended</h4>
+                <p>Routine use of β-2 agonists, prostaglandins, surfactant, or statins.</p>
+            </div>
+        </section>
+
+<section id="simulator" class="section">
+  <h2><i class="fas fa-laptop-medical"></i> ARDS Ventilator Simulator</h2>
+
+  <div class="grid">
+    <div class="grid-item">
+      <h3>Set Ventilator Parameters</h3>
+      <label>Tidal Volume (mL/kg PBW): <input id="tv" type="number" value="6" min="4" max="12"></label><br>
+      <label>Rate (breaths/min): <input id="rate" type="number" value="20" min="5" max="40"></label><br>
+      <label>PEEP (cmH₂O): <input id="peep" type="number" value="10" min="0" max="30"></label><br>
+      <label>FiO₂ (%): <input id="fio2" type="number" value="60" min="21" max="100"></label><br>
+      <label>I:E Ratio: <input id="ie" type="text" value="1:2"></label><br>
+      <label>PBW (kg): <input id="pbw" type="number" value="70" min="30" max="200"></label><br>
+      <label>Compliance (mL/cmH₂O): <input id="compliance" type="number" value="30" min="5" max="200"></label><br>
+      <button class="btn" id="runSim">Run Simulation</button>
+      <button class="btn" id="resetSim" style="background-color:#e74c3c;margin-left:8px;">Reset</button>
+    </div>
+
+    <div class="grid-item">
+      <h3>Simulation Output</h3>
+      <div id="results" class="card"></div>
+      <h3>Recommendations</h3>
+      <div id="recs" class="card"></div>
+    </div>
+  </div>
+
+  <h3>Blood Gas Trends</h3>
+  <div class="chart-container">
+    <canvas id="abgChart"></canvas>
+  </div>
+</section>
+
+<section id="studies" class="section">
+            <h2><i class="fas fa-book-open"></i> Landmark ARDS Trials</h2>
+
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>ARDSNet ARMA (2000)</h3>
+                        <p><strong>Intervention:</strong> Low tidal volume ventilation (6 mL/kg PBW)</p>
+                        <p><strong>Finding:</strong> Reduced 28-day mortality and more ventilator-free days</p>
+                        <a href="https://www.nejm.org/doi/full/10.1056/NEJM200005043421801" class="btn" target="_blank">Read Study</a>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>ALVEOLI (2004)</h3>
+                        <p><strong>Intervention:</strong> Higher vs Lower PEEP</p>
+                        <p><strong>Finding:</strong> Improved oxygenation but no mortality difference</p>
+                        <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa032193" class="btn" target="_blank">Read Study</a>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>FACTT (2006)</h3>
+                        <p><strong>Intervention:</strong> Conservative vs liberal fluid strategy</p>
+                        <p><strong>Finding:</strong> Conservative strategy increased ventilator-free days</p>
+                        <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa062200" class="btn" target="_blank">Read Study</a>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>CESAR (2009)</h3>
+                        <p><strong>Intervention:</strong> Referral for ECMO vs conventional care</p>
+                        <p><strong>Finding:</strong> Improved survival without severe disability</p>
+                        <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(09)61069-2/fulltext" class="btn" target="_blank">Read Study</a>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>ACURASYS (2010)</h3>
+                        <p><strong>Intervention:</strong> Early neuromuscular blockade (cisatracurium)</p>
+                        <p><strong>Finding:</strong> Improved adjusted 90-day survival</p>
+                        <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa1005372" class="btn" target="_blank">Read Study</a>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>PROSEVA (2013)</h3>
+                        <p><strong>Intervention:</strong> Early prolonged prone positioning</p>
+                        <p><strong>Finding:</strong> Significant mortality reduction at 28 and 90 days</p>
+                        <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa1214103" class="btn" target="_blank">Read Study</a>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Amato et al. (2015)</h3>
+                        <p><strong>Intervention:</strong> Driving pressure focus</p>
+                        <p><strong>Finding:</strong> Driving pressure most strongly associated with survival</p>
+                        <a href="https://www.nejm.org/doi/full/10.1056/NEJMsa1410639" class="btn" target="_blank">Read Study</a>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>EOLIA (2018)</h3>
+                        <p><strong>Intervention:</strong> Early ECMO vs conventional care</p>
+                        <p><strong>Finding:</strong> No significant mortality reduction in primary analysis</p>
+                        <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa1800385" class="btn" target="_blank">Read Study</a>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>ROSE (2019)</h3>
+                        <p><strong>Intervention:</strong> Early neuromuscular blockade vs usual care</p>
+                        <p><strong>Finding:</strong> No mortality benefit; routine use not supported</p>
+                        <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa1901686" class="btn" target="_blank">Read Study</a>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>DEXA-ARDS (2020)</h3>
+                        <p><strong>Intervention:</strong> Dexamethasone in moderate-severe ARDS</p>
+                        <p><strong>Finding:</strong> Reduced duration of ventilation and 60-day mortality</p>
+                        <a href="https://www.thelancet.com/journals/lanres/article/PIIS2213-2600(19)30417-5/fulltext" class="btn" target="_blank">Read Study</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="guidelines" class="section">
+            <h2><i class="fas fa-clipboard-list"></i> Current Guidelines & Recommendations</h2>
+
+            <div class="card">
+                <p>Strong recommendations for evidence-based management of ARDS patients.</p>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Recommendation</th>
+                        <th>Strength</th>
+                        <th>Evidence Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Low tidal volume ventilation (6 mL/kg PBW)</td>
+                        <td>Strong</td>
+                        <td>High</td>
+                    </tr>
+                    <tr>
+                        <td>Plateau pressure ≤30 cmH₂O</td>
+                        <td>Strong</td>
+                        <td>High</td>
+                    </tr>
+                    <tr>
+                        <td>Prone positioning in severe ARDS</td>
+                        <td>Strong</td>
+                        <td>High</td>
+                    </tr>
+                    <tr>
+                        <td>Conservative fluid management</td>
+                        <td>Conditional</td>
+                        <td>Moderate</td>
+                    </tr>
+                    <tr>
+                        <td>Short-course NMBA in early severe ARDS</td>
+                        <td>Conditional</td>
+                        <td>Moderate</td>
+                    </tr>
+                    <tr>
+                        <td>ECMO in refractory hypoxemia</td>
+                        <td>Conditional</td>
+                        <td>Moderate</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="card">
+                <p>Strong for LPV and prone positioning; weak for corticosteroids and NMBA; recommend against routine use of iNO.</p>
+            </div>
+
+            <div class="card">
+                <p>Strong for LPV and prone positioning; conditional for use of ECMO; recommends against routine use of iNO or HFOV.</p>
+            </div>
+
+            <a href="https://www.atsjournals.org/doi/full/10.1164/rccm.201703-0548ST" class="btn" target="_blank">View Full Guidelines</a>
+        </section>
+
+        <section id="resources" class="section">
+            <h2><i class="fas fa-external-link-alt"></i> Additional Resources</h2>
+
+            <div class="card">
+                <h3>For Further Enrichment</h3>
+                <p>Explore these authoritative resources to deepen your understanding of ARDS management and research.</p>
+            </div>
+
+            <ul class="resource-list">
+                <li><a href="https://www.uptodate.com/contents/acute-respiratory-distress-syndrome-ards-management-ventilation-strategies" target="_blank">UpToDate: ARDS Management</a> - Comprehensive clinical resource</li>
+                <li><a href="https://journals.lww.com/ccmjournal/fulltext/2021/11000/Surviving_Sepsis_Campaign__International.21.aspx" target="_blank">Surviving Sepsis Campaign Guidelines</a> - Includes ARDS management in sepsis</li>
+                <li><a href="https://www.esicm.org/" target="_blank">ESICM ARDS Section</a> - European Society of Intensive Care Medicine resources</li>
+                <li><a href="http://www.ardsnet.org/" target="_blank">ARDSNet Protocols</a> - Research network and treatment protocols</li>
+                <li><a href="https://www.ncbi.nlm.nih.gov/books/NBK436002/" target="_blank">NCBI Bookshelf: ARDS</a> - Detailed medical textbook chapter</li>
+                <li><a href="https://www.thoracic.org/professionals/clinical-resources/critical-care/clinical-education/ards.php" target="_blank">ATS Patient Education</a> - American Thoracic Society resources</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 ARDS Resource | For Medical Professionals</p>
+            <p>This resource is intended for educational purposes only. Always follow your institution's protocols and consult current guidelines when treating patients.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Incidence Chart
+        const incidenceCtx = document.getElementById('incidenceChart').getContext('2d');
+        const incidenceChart = new Chart(incidenceCtx, {
+            type: 'bar',
+            data: {
+                labels: ['General Population', 'ICU Patients', 'Mechanically Ventilated'],
+                datasets: [{
+                    label: 'Incidence per 100,000',
+                    data: [40, 10000, 23000],
+                    backgroundColor: [
+                        'rgba(52, 152, 219, 0.7)',
+                        'rgba(46, 204, 113, 0.7)',
+                        'rgba(231, 76, 60, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(52, 152, 219, 1)',
+                        'rgba(46, 204, 113, 1)',
+                        'rgba(231, 76, 60, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Cases per 100,000'
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'ARDS Incidence in Different Populations'
+                    }
+                }
+            }
+        });
+
+        // Mortality Chart
+        const mortalityCtx = document.getElementById('mortalityChart').getContext('2d');
+        const mortalityChart = new Chart(mortalityCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Mild', 'Moderate', 'Severe', 'Overall'],
+                datasets: [{
+                    label: 'Mortality Rate (%)',
+                    data: [27, 32, 45, 38],
+                    backgroundColor: [
+                        'rgba(52, 152, 219, 0.7)',
+                        'rgba(155, 89, 182, 0.7)',
+                        'rgba(231, 76, 60, 0.7)',
+                        'rgba(241, 196, 15, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(52, 152, 219, 1)',
+                        'rgba(155, 89, 182, 1)',
+                        'rgba(231, 76, 60, 1)',
+                        'rgba(241, 196, 15, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 50,
+                        title: {
+                            display: true,
+                            text: 'Mortality Rate (%)'
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'ARDS Mortality by Severity'
+                    }
+                }
+            }
+        });
+
+        // Risk Factors Chart
+        const riskFactorsCtx = document.getElementById('riskFactorsChart').getContext('2d');
+        const riskFactorsChart = new Chart(riskFactorsCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Pneumonia', 'Non-pulmonary Sepsis', 'Aspiration', 'Trauma', 'Pancreatitis', 'Other'],
+                datasets: [{
+                    data: [35, 25, 15, 10, 5, 10],
+                    backgroundColor: [
+                        'rgba(52, 152, 219, 0.7)',
+                        'rgba(46, 204, 113, 0.7)',
+                        'rgba(155, 89, 182, 0.7)',
+                        'rgba(241, 196, 15, 0.7)',
+                        'rgba(230, 126, 34, 0.7)',
+                        'rgba(231, 76, 60, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(52, 152, 219, 1)',
+                        'rgba(46, 204, 113, 1)',
+                        'rgba(155, 89, 182, 1)',
+                        'rgba(241, 196, 15, 1)',
+                        'rgba(230, 126, 34, 1)',
+                        'rgba(231, 76, 60, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Common Risk Factors for ARDS'
+                    }
+                }
+            }
+        });
+    </script>
+
+<script>
+(function(){
+  // Avoid duplicate by checking if already defined
+  if (window.__ARDS_SIM_LOADED) return;
+  window.__ARDS_SIM_LOADED = true;
+
+  function simulateOnce(){
+    const tv = parseFloat(document.getElementById("tv").value);
+    const rate = parseFloat(document.getElementById("rate").value);
+    const peep = parseFloat(document.getElementById("peep").value);
+    const fio2 = Math.min(100, Math.max(21, parseFloat(document.getElementById("fio2").value))) / 100;
+    const pbw = parseFloat(document.getElementById("pbw").value);
+    const compliance = parseFloat(document.getElementById("compliance").value);
+
+    const vt = tv * pbw; // mL
+    const minuteVent = (vt / 1000) * rate; // L/min
+    // simplified gas exchange estimations
+    const paCO2 = Math.max(20, Math.round(60 - (minuteVent - 5) * 2));
+    const paO2 = Math.round(Math.min(500, (fio2 * 300) + (peep * 2)));
+
+    document.getElementById("results").innerHTML = `
+      <p><strong>Tidal Volume:</strong> ${vt.toFixed(0)} mL (${tv.toFixed(1)} mL/kg PBW)</p>
+      <p><strong>Minute Ventilation:</strong> ${minuteVent.toFixed(1)} L/min</p>
+      <p><strong>Estimated PaCO₂:</strong> ${paCO2} mmHg</p>
+      <p><strong>Estimated PaO₂:</strong> ${paO2} mmHg</p>
+    `;
+
+    let recs = "";
+    if (tv > 8) recs += "⚠️ Reduce tidal volume (risk of volutrauma).<br>";
+    if (tv < 4) recs += "⚠️ Tidal volume unusually low; ensure adequate ventilation.<br>";
+    if (peep < 5) recs += "⚠️ Increase PEEP to ≥5 cmH₂O.<br>";
+    if (paO2 < 60) recs += "➡️ Consider higher FiO₂, recruitment maneuvers, or prone positioning.<br>";
+    if (paCO2 > 60) recs += "➡️ Increase minute ventilation (rate/TV) or check for ventilation issues.<br>";
+    if (recs === "") recs = "✅ Settings are within lung-protective strategy.";
+
+    document.getElementById("recs").innerHTML = recs;
+
+    // Update ABG chart
+    if (window.abgChartInstance){
+      window.abgChartInstance.data.labels.push(`Run ${window.abgChartInstance.data.labels.length + 1}`);
+      window.abgChartInstance.data.datasets[0].data.push(paO2);
+      window.abgChartInstance.data.datasets[1].data.push(paCO2);
+      window.abgChartInstance.update();
+    }
+  }
+
+  function resetSim(){
+    // reset chart and outputs
+    document.getElementById("results").innerHTML = "";
+    document.getElementById("recs").innerHTML = "";
+    if (window.abgChartInstance){
+      window.abgChartInstance.data.labels = [];
+      window.abgChartInstance.data.datasets[0].data = [];
+      window.abgChartInstance.data.datasets[1].data = [];
+      window.abgChartInstance.update();
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    var runBtn = document.getElementById('runSim');
+    var resetBtn = document.getElementById('resetSim');
+    if (runBtn) runBtn.addEventListener('click', simulateOnce);
+    if (resetBtn) resetBtn.addEventListener('click', resetSim);
+
+    // Create ABG chart with Chart.js (assumes Chart.js loaded)
+    try {
+      var ctx = document.getElementById('abgChart').getContext('2d');
+      window.abgChartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: [],
+          datasets: [
+            { label: 'PaO₂ (mmHg)', data: [], fill: true, tension: 0.3 },
+            { label: 'PaCO₂ (mmHg)', data: [], fill: true, tension: 0.3 }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { title: { display: true, text: 'Blood Gas Trends with Simulation' } },
+          scales: { y: { title: { display: true, text: 'mmHg' } } }
+        }
+      });
+    } catch (e){
+      console.warn('ABG Chart init failed', e);
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
